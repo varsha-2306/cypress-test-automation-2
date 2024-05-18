@@ -1,0 +1,42 @@
+{
+  "name": "cypress-test-automation-2",
+  "version": "1.0.0",
+  "description": "Cypress automation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "full-regression-headed-chrome": "cypress run --headed --browser chrome --spec 'cypress/e2e/*.feature'",
+    "full-regression-headless-chrome": "cypress run --browser chrome --spec 'cypress/e2e/*.feature'",
+    "CONTACT_US-headed": "cypress run -e Tags=\"@contact_us\"--headed",
+    "CONTACT_US-headless-chrome": "cypress run -e Tags=\"@contact_us\" ",
+    "Login_test-headed-chrome": "cypress run -e Tags=\"@login\"--headed",
+    "Login-and-smoke-pack": "cypress run -e Tags=\"@login or @smoke\"--headed",
+    "smoke-headed-chrome": "cypress run -e Tags=\" @smoke\"--headed",
+    "Regression_pack_headed": "cypress run -e Tags=\"@regression and not @smoke\"--headed",
+    "generate-multiple-html-report": "node cypress\\cucumber-html-report.js"
+  },
+  "author": "varsha",
+  "license": "ISC",
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^20.0.5",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
+    "cypress": "^13.9.0",
+    "cypress-xpath": "^2.0.1",
+    "ts-loader": "^9.5.1"
+  },
+  "cypress-cucumber-preprocessor": {
+    "stepDefinitions": "cypress/support/step_definitions/**/*.js",
+    "html": {
+      "enabled": true,
+      "output": "cypress/reports/cucumber-html/cucumber-report.html"
+    },
+    "messages": {
+      "enabled": true,
+      "output": "cypress/reports/cucumber-ndjson/cucumber-report.ndjson"
+    },
+    "json": {
+      "enabled": true,
+      "output": "cypress/reports/cucumber-json/cucumber-report.json"
+    }
+  }
+}
